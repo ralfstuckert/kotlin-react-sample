@@ -12,13 +12,13 @@ interface GiphyProps : RProps {
     var giphy: Giphy
 }
 
+
 class GiphyDetails(props: GiphyProps) : RComponent<GiphyProps, RState>(props) {
 
     override fun RBuilder.render() {
         val giphy = props.giphy
-        if (giphy == DummyGiphy) {
-            span {  }
-        } else {
+
+        if (giphy != DummyGiphy) {
             div("giphy-detail col-md-8") {
                 div("embed-responsive embed-responsive-16by9") {
                     iframe(classes="embed-responsive-item" ) {
