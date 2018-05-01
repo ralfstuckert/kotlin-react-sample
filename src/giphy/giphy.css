@@ -1,0 +1,17 @@
+
+.giphy-item img {
+    max-width: 80%;
+}
+
+.giphy-detail .details {
+    margin: 10px 0 10px 0;
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+
+.list-group-item:hover {
+    background-color: #eee;
+}
+
