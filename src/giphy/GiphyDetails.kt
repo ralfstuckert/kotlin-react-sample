@@ -1,8 +1,6 @@
 package giphy
 
-import kotlinx.html.IframeSandbox
-import kotlinx.html.role
-import kotlinx.html.title
+import kotlinx.html.*
 import react.RBuilder
 import react.RComponent
 import react.RProps
@@ -24,25 +22,28 @@ class GiphyDetails(props: GiphyProps) : RComponent<GiphyProps, RState>(props) {
             div("giphy-detail col-md-8") {
                 div("embed-responsive embed-responsive-16by9") {
                     iframe(classes="embed-responsive-item" ) {
-                        attrs.src = giphy.giphyUrl
-                        attrs.title = giphy.fileName
+                        attrs {
+                            src = giphy.giphyUrl
+                            title = giphy.fileName
+                        }
                     }
                 }
                 div("details text-center") {
-                    a("btn btn-primary") {
-                        attrs.href=giphy.downloadUrl
-                        attrs.title = giphy.fileName
-                        attrs.role = "button"
-                        attrs["download"]= giphy.fileName
-                        attrs["alt"]= giphy.fileName
-
+                    a(giphy.downloadUrl,  classes="btn btn-primary") {
+                        attrs {
+                            title = giphy.fileName
+                            role = "button"
+                            target = "_blank"
+                        }
                         +"Download from Giphy"
                     }
                 }
             }
         }
     }
+
 }
+
 
 fun RBuilder.giphyDetails(giphy: Giphy = DummyGiphy) = child(GiphyDetails::class) {
     attrs.giphy = giphy

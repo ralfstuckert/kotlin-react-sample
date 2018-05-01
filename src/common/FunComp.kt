@@ -14,6 +14,7 @@ fun RBuilder.alert(message: String = "") = if (message.isEmpty()) {
     }
 }
 
+
 fun RBuilder.loading(isLoading: Boolean) = if (isLoading) {
     h3 {
         +"Loading... "
@@ -22,5 +23,6 @@ fun RBuilder.loading(isLoading: Boolean) = if (isLoading) {
 } else {
     span {}
 }
+
 
 fun RBuilder.spinner() = div("spinner") {}

@@ -16,6 +16,7 @@ data class AppState(var giphies: Array<Giphy> = emptyArray(),
                     var errorMessage: String = "",
                     var loading: Boolean = false) : RState
 
+
 class App : RComponent<RProps, AppState>() {
 
     init {
@@ -23,7 +24,6 @@ class App : RComponent<RProps, AppState>() {
     }
 
     override fun RBuilder.render() {
-
         div("container") {
             h1("text-center") {
                 +"Giphy Search"

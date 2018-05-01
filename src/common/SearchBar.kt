@@ -26,8 +26,10 @@ class SearchBar(props: SearchBarProps) : RComponent<SearchBarProps, SearchBarSta
     override fun RBuilder.render() {
         div("search-bar") {
             input(InputType.search) {
-                attrs.value = state.term
-                attrs.onChangeFunction = ::onInputChange
+                attrs {
+                    value = state.term
+                    onChangeFunction = ::onInputChange
+                }
             }
         }
     }

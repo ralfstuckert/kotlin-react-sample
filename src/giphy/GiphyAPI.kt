@@ -28,7 +28,7 @@ val Giphy.giphyUrl: String
     get() = this.embed_url
 
 val Giphy.downloadUrl: String
-    get() = this.images.original.url
+    get() = "https://media.giphy.com/media/${this.id}/giphy.gif"
 
 val Giphy.previewUrl: String
     get() = this.images.fixed_height_small_still.url;

@@ -19,18 +19,23 @@ class GiphyListItem(props: GiphyListItemProps) : RComponent<GiphyListItemProps, 
 
         li("list-group-item") {
             attrs.onClickFunction = { props.onSelect(giphy) }
+
             div("giphy-item media") {
                 div("media-left") {
                     img("media-object") {
-                        attrs.src = giphy.previewUrl
-                        attrs.alt = giphy.fileName
-                        attrs.title = giphy.fileName
+                        attrs {
+                            src = giphy.previewUrl
+                            alt = giphy.fileName
+                            title = giphy.fileName
+                        }
                     }
                 }
             }
         }
     }
+
 }
+
 
 fun RBuilder.giphyListItem(giphy: Giphy, onSelect: (Giphy) -> Unit) = child(GiphyListItem::class) {
     attrs.giphy = giphy

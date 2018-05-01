@@ -16,13 +16,13 @@ interface GiphyListProps : RProps {
 class GiphyList(props: GiphyListProps) : RComponent<GiphyListProps, RState>(props) {
 
     override fun RBuilder.render() {
-
         ul("col-md-4 list-group") {
             props.giphies.map { giphy ->
                 giphyListItem(giphy, props.onSelect)
             }
         }
     }
+
 }
 
 fun RBuilder.giphyList(giphies: Array<Giphy>, onSelect: (Giphy) -> Unit) = child(GiphyList::class) {
