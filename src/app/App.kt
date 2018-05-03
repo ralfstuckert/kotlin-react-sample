@@ -29,7 +29,6 @@ class App : RComponent<RProps, AppState>() {
     }
 
     override fun RBuilder.render() {
-        console.log("state", state)
         div("container") {
             h1("text-center") {
                 +"Giphy Search"
