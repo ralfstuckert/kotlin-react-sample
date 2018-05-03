@@ -5,25 +5,31 @@ import common.loading
 import common.searchBar
 import giphy.*
 import kotlinx.coroutines.experimental.async
+import lodash.lodash
 import react.*
 import react.dom.div
 import react.dom.h1
-import lodash.*
 
 
-data class AppState(var giphies: Array<Giphy> = emptyArray(),
-                    var selectedGiphy: Giphy = DummyGiphy,
-                    var errorMessage: String = "",
-                    var loading: Boolean = false) : RState
+interface AppState : RState {
+    var giphies: Array<Giphy>
+    var selectedGiphy: Giphy
+    var errorMessage: String
+    var loading: Boolean
+}
 
 
 class App : RComponent<RProps, AppState>() {
 
-    init {
-        state = AppState()
+    override fun AppState.init() {
+        giphies = emptyArray()
+        selectedGiphy = DummyGiphy
+        errorMessage = ""
+        loading = false
     }
 
     override fun RBuilder.render() {
+        console.log("state", state)
         div("container") {
             h1("text-center") {
                 +"Giphy Search"

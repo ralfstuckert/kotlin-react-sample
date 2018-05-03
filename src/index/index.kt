@@ -1,9 +1,10 @@
 package index
 
-import app.*
-import kotlinext.js.*
-import react.dom.*
-import kotlin.browser.*
+import app.app
+import kotlinext.js.require
+import kotlinext.js.requireAll
+import react.dom.render
+import kotlin.browser.document
 
 fun main(args: Array<String>) {
     requireAll(require.context("src", true, js("/\\.css$/")))

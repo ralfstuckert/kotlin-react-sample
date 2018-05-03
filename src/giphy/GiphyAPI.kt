@@ -58,7 +58,7 @@ val PUBLIC_BETA_API_KEY = "dc6zaTOxFJmzC"
 val GIPHY_SEARCH = "http://api.giphy.com/v1/gifs/search"
 
 
-fun giphyUrl(searchTerm:String) = "${GIPHY_SEARCH}?q=${searchTerm}&limit=7&api_key=${PUBLIC_BETA_API_KEY}"
+fun giphyUrl(searchTerm: String) = "${GIPHY_SEARCH}?q=${searchTerm}&limit=7&api_key=${PUBLIC_BETA_API_KEY}"
 
 fun giphySearch(searchTerm: String, callback: (Array<Giphy>) -> Unit, error: (Throwable) -> Unit) {
 
@@ -70,7 +70,7 @@ fun giphySearch(searchTerm: String, callback: (Array<Giphy>) -> Unit, error: (Th
     }
 }
 
-suspend fun giphySearchCoroutines(searchTerm: String):Array<Giphy> {
+suspend fun giphySearchCoroutines(searchTerm: String): Array<Giphy> {
 
     val result = axios.get<dynamic>(giphyUrl(searchTerm)).await()
     val giphies: Array<Giphy> = result.data.data

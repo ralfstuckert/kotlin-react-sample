@@ -1,12 +1,10 @@
 package giphy
 
-import kotlinx.html.js.onClickFunction
-import kotlinx.html.title
 import react.RBuilder
 import react.RComponent
 import react.RProps
 import react.RState
-import react.dom.*
+import react.dom.ul
 
 interface GiphyListProps : RProps {
     var giphies: Array<Giphy>

@@ -1,9 +1,10 @@
 package common
 
-import react.*
+import react.RBuilder
+import react.RProps
+import react.ReactElement
 import react.dom.div
 import react.dom.h3
-import react.dom.span
 
 fun RBuilder.alert(message: String = "") = if (message.isNotEmpty()) {
     div("alert alert-danger") {
@@ -27,8 +28,8 @@ fun RBuilder.loading(isLoading: Boolean) = if (isLoading) {
 fun RBuilder.spinner() = div("spinner") {}
 
 
-object empty:ReactElement {
-    override val props = object:RProps {}
+object empty : ReactElement {
+    override val props = object : RProps {}
 }
 
 

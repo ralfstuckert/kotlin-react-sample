@@ -1,27 +1,26 @@
 package common
 
-import giphy.Giphy
-import giphy.fileName
-import giphy.giphyUrl
 import kotlinx.html.InputType
 import kotlinx.html.js.onChangeFunction
-import kotlinx.html.js.onClickFunction
-import kotlinx.html.title
 import org.w3c.dom.HTMLInputElement
 import org.w3c.dom.events.Event
 import react.*
 import react.dom.div
-import react.dom.img
 import react.dom.input
-import react.dom.li
 
 interface SearchBarProps : RProps {
     var onSearchTermChange: (String) -> Any
 }
 
-data class SearchBarState(var term: String) : RState
+interface SearchBarState : RState {
+    var term: String
+}
 
 class SearchBar(props: SearchBarProps) : RComponent<SearchBarProps, SearchBarState>(props) {
+
+    override fun SearchBarState.init(props: SearchBarProps) {
+        term = ""
+    }
 
     override fun RBuilder.render() {
         div("search-bar") {
@@ -29,6 +28,7 @@ class SearchBar(props: SearchBarProps) : RComponent<SearchBarProps, SearchBarSta
                 attrs {
                     value = state.term
                     onChangeFunction = ::onInputChange
+                    placeholder = "enter search term"
                 }
             }
         }
