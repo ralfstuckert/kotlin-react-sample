@@ -55,7 +55,7 @@ object DummyGiphy : Giphy {
  */
 val PUBLIC_BETA_API_KEY = "dc6zaTOxFJmzC"
 
-val GIPHY_SEARCH = "http://api.giphy.com/v1/gifs/search"
+val GIPHY_SEARCH = "https://api.giphy.com/v1/gifs/search"
 
 
 fun giphyUrl(searchTerm: String) = "${GIPHY_SEARCH}?q=${searchTerm}&limit=7&api_key=${PUBLIC_BETA_API_KEY}"
