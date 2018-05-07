@@ -5,8 +5,6 @@ package axios
 import kotlin.js.*
 
 @JsModule("axios")
-
-@JsName("axios")
 external val axios: AxiosInstance = definedExternally
 
 
