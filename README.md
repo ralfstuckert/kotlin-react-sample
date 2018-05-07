@@ -1,6 +1,6 @@
 # kotlin-react-sample
 This repository provides the source code for the Kotlin-React 
-sample app of the article [Getting Started With Kotlin-React](TBD)
+sample app of the article [Getting Started With Kotlin-React](https://medium.com/@ralf.stuckert/getting-started-with-kotlin-react-c5f3b079a8bf).
 The app was set up using [create-react-kotlin-app](https://github.com/JetBrains/create-react-kotlin-app)
 which scaffolds a runnable app including an IntelliJ project file.
 
