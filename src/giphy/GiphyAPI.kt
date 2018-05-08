@@ -1,6 +1,6 @@
 package giphy
 
-import axios.axios
+import axios.Axios
 import kotlinx.coroutines.experimental.await
 
 // some kotlin interfaces for the giphy API
@@ -57,12 +57,13 @@ val PUBLIC_BETA_API_KEY = "dc6zaTOxFJmzC"
 
 val GIPHY_SEARCH = "https://api.giphy.com/v1/gifs/search"
 
+data class GiphySearchResponse(val data:Array<Giphy>)
 
 fun giphyUrl(searchTerm: String) = "${GIPHY_SEARCH}?q=${searchTerm}&limit=7&api_key=${PUBLIC_BETA_API_KEY}"
 
 fun giphySearch(searchTerm: String, callback: (Array<Giphy>) -> Unit, error: (Throwable) -> Unit) {
 
-    axios.get<dynamic>(giphyUrl(searchTerm)).then { result ->
+    Axios.get<GiphySearchResponse>(giphyUrl(searchTerm)).then { result ->
         val giphies: Array<Giphy> = result.data.data
         callback(giphies)
     }.catch {
@@ -72,7 +73,7 @@ fun giphySearch(searchTerm: String, callback: (Array<Giphy>) -> Unit, error: (Th
 
 suspend fun giphySearchCoroutines(searchTerm: String): Array<Giphy> {
 
-    val result = axios.get<dynamic>(giphyUrl(searchTerm)).await()
+    val result = Axios.get<GiphySearchResponse>(giphyUrl(searchTerm)).await()
     val giphies: Array<Giphy> = result.data.data
     return giphies;
 }
