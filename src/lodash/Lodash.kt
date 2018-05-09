@@ -1,9 +1,10 @@
 package lodash
 
 @JsModule("lodash")
-external val lodash: Lodash = definedExternally
+external val lodash: dynamic
 
 external interface Lodash {
-    fun <V> debounce(function: (dynamic) -> V, debounceMillis: Int): (dynamic) -> V
+    fun <K,V> debounce(functionToDebounce: (K) -> V, debounceMillis: Int): (K) -> V
 }
+
 
