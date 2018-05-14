@@ -2,6 +2,7 @@ package giphy
 
 import axios.Axios
 import kotlinx.coroutines.experimental.await
+import kotlin.js.Promise
 
 // some kotlin interfaces for the giphy API
 external interface GiphyImg {
@@ -61,19 +62,15 @@ data class GiphySearchResponse(val data:Array<Giphy>)
 
 fun giphyUrl(searchTerm: String) = "${GIPHY_SEARCH}?q=${searchTerm}&limit=7&api_key=${PUBLIC_BETA_API_KEY}"
 
-fun giphySearch(searchTerm: String, callback: (Array<Giphy>) -> Unit, error: (Throwable) -> Unit) {
+fun giphySearch(searchTerm: String):Promise<Array<Giphy>> {
 
-    Axios.get<GiphySearchResponse>(giphyUrl(searchTerm)).then { result ->
-        val giphies: Array<Giphy> = result.data.data
-        callback(giphies)
-    }.catch {
-        error(it)
+    return Axios.get<GiphySearchResponse>(giphyUrl(searchTerm)).then { result ->
+         result.data.data
     }
 }
 
 suspend fun giphySearchCoroutines(searchTerm: String): Array<Giphy> {
 
     val result = Axios.get<GiphySearchResponse>(giphyUrl(searchTerm)).await()
-    val giphies: Array<Giphy> = result.data.data
-    return giphies;
+    return result.data.data
 }

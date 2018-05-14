@@ -33,7 +33,7 @@ class App : RComponent<RProps, AppState>() {
             h1("text-center") {
                 +"Giphy Search"
             }
-            searchBar(onSearchTermChange = lodash.debounce(::searchGiphiesCoroutines, 300))
+            searchBar(onSearchTermChange = lodash.debounce(::searchGiphies, 300))
             alert(state.errorMessage)
             loading(state.loading)
             giphyDetails(state.selectedGiphy)
@@ -53,18 +53,18 @@ class App : RComponent<RProps, AppState>() {
             errorMessage = ""
         }
 
-        giphySearch(term, { result: Array<Giphy> ->
+        giphySearch(term).then { result: Array<Giphy> ->
             setState {
                 selectedGiphy = result[0]
                 giphies = result
                 loading = false
             }
-        }, { throwable: Throwable ->
+        }.catch { throwable: Throwable ->
             setState {
                 errorMessage = throwable.toString()
                 loading = false
             }
-        })
+        }
     }
 
     fun searchGiphiesCoroutines(term: String) = async {
